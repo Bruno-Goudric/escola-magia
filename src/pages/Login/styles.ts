@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import backgroundSchool from "assets/imagens/background.png";
-import { Form } from "@unform/web";
+import backgroundSchool from "assets/imagens/background.jpg";
 
 export const Container = styled.section`
-  max-width: 1920px;
+  max-width: 2560px;
   height: 100vh;
   background-image: url(${backgroundSchool});
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 
   display: flex;
   justify-content: center;
@@ -41,7 +42,7 @@ export const Header = styled.header`
   }
 `;
 
-export const FormBody = styled(Form)`
+export const FormBody = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,22 +54,18 @@ export const FormBody = styled(Form)`
     margin-top: 10px;
     margin-bottom: 10px;
 
+    > label {
+      font-weight: bold;
+    }
+
     > input {
       width: 404px;
       height: 50px;
       border-radius: 5px;
       border: none;
       background: #f1e7e7;
+      padding: 10px;
+      font-size: 16px;
     }
   }
-`;
-
-export const ButtonDefault = styled.button`
-  width: 213px;
-  height: 44px;
-  background: #2c29b5;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  margin-top: 40px;
 `;

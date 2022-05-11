@@ -9,6 +9,7 @@ export default function Routers() {
   return (
     <Routes>
       <Route path={routesNames.ROOT} element={<Pages.Login />} />
+      <Route path={routesNames.LISTMAGIC} element={<Pages.ListMagic />} />
     </Routes>
   );
 }

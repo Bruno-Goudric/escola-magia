@@ -1,23 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import logoSchool from "assets/imagens/logo.png";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+import * as Components from "components";
 import * as S from "./styles";
 
 function Login() {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    if (userEmail === "professor@magia.com.br" && userPassword === "1234") {
-      navigate("/magic-list");
+
+  var largura = window.screen.width;
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    if (userEmail === "professor@escola.com.br" && userPassword === "123") {
+      navigate("/list-magic");
     } else {
-      navigate("/magic-list");
+      console.log("Aqui");
+      toast.error("Email/Senha não coincidem");
     }
   };
 
   return (
     <S.Container>
+      <ToastContainer newestOnTop />
       <S.Content>
         <S.Header>
           <img src={logoSchool} alt="Escola-de-Magia" />
@@ -42,7 +52,7 @@ function Login() {
             />
           </div>
 
-          <S.ButtonDefault type="submit">Entrar</S.ButtonDefault>
+          <Components.Button title="Entrar" color="#fff" background="#2c29b5" />
         </S.FormBody>
       </S.Content>
     </S.Container>
