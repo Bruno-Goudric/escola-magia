@@ -1,27 +1,26 @@
-import React, { useState, FormEvent } from "react";
-import logoSchool from "assets/imagens/logo.png";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState, FormEvent } from 'react';
+import logoSchool from 'assets/imagens/logo.png';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import * as Components from "components";
-import * as S from "./styles";
+import * as Components from 'components/Atoms';
+import * as S from './styles';
 
 function Login() {
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
   const navigate = useNavigate();
-
-  var largura = window.screen.width;
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    const { REACT_APP_TOKEN } = process.env;
 
-    if (userEmail === "professor@escola.com.br" && userPassword === "123") {
-      navigate("/list-magic");
+    if (userEmail === 'professor@escola.com.br' && userPassword === '123') {
+      navigate('/list-magic');
+      localStorage.setItem('token', JSON.stringify(REACT_APP_TOKEN));
     } else {
-      console.log("Aqui");
-      toast.error("Email/Senha não coincidem");
+      toast.error('Email/Senha não coincidem');
     }
   };
 
@@ -29,17 +28,14 @@ function Login() {
     <S.Container>
       <ToastContainer newestOnTop />
       <S.Content>
-        <S.Header>
-          <img src={logoSchool} alt="Escola-de-Magia" />
-          <span>Escola de Magia</span>
-        </S.Header>
+        <Components.HeaderComponent />
         <S.FormBody onSubmit={handleSubmit}>
           <div>
             <label htmlFor="">E-mail</label>
             <input
               type="email"
               name="email"
-              onChange={(e) => setUserEmail(e.target.value)}
+              onChange={e => setUserEmail(e.target.value)}
             />
           </div>
 
@@ -47,8 +43,8 @@ function Login() {
             <label htmlFor="">Senha</label>
             <input
               type="password"
-              name="senha"
-              onChange={(e) => setUserPassword(e.target.value)}
+              name="password"
+              onChange={e => setUserPassword(e.target.value)}
             />
           </div>
 

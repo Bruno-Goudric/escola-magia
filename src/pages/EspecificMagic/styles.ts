@@ -8,10 +8,14 @@ export const Container = styled.section`
   margin-bottom: 50px;
 `;
 
-export const Content = styled.header`
-  margin-bottom: 48px;
+export const Title = styled.h1`
+  margin-bottom: 40px;
 `;
 
-export const Title = styled.h1`
-  margin-bottom: 50px;
+export const ContainerButton = styled.div`
+  width: 43%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  margin-bottom
 `;
